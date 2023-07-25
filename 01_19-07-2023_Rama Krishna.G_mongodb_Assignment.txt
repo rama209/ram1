@@ -1,0 +1,186 @@
+                                                                                    .
+                                                        MongoDB Assignment                   
+                                                                                                                          date: 19-07-2023
+
+
+How to show the databases present ?
+      >show dbs
+      Example :
+      > show dbs
+      EmpDB     0.000GB
+      admin     0.000GB
+
+How to create a database ?
+use [name of database]
+Example :
+ #DB creation
+> use productsdb
+switched to db productsdb
+How cmd to check active collection or database ?
+>db
+example :
+> db
+ productsdb
+How to insert a document into a collection?
+>db.mobile.insert({"pid":1,"pname" :"iphone","pprice" :67999})
+ pid:1 
+ pname=iphone
+ pprice=67999
+
+How to show all documents in a collection?
+>db.[collection Name].find()
+
+or
+>db.[collection name].find().pretty() for a well indented list.
+>db.employee.find().pretty()
+
+Example :
+> db.mobile.find({})
+
+{ "_id" : ObjectId("64b8026ec7f7a07e9291eda8"),"pid" : 1, "pname" : "iphone", "pprice" : 67999 }
+
+>db.employee.find().pretty()
+
+{ 
+      "_id" : ObjectId("64b8026ec7f7a07e9291eda8"),
+      "pid" : 1, 
+      "pname" : "iphone", 
+      "pprice" : 67999 
+}
+{ 
+      "_id" : ObjectId("64b80327c7f7a07e9291eda9"),
+      "pid" : 2, 
+      "pname" : "samsung", 
+      "pprice" : 25000 
+}
+{ 
+      "_id" : ObjectId("64b8036ac7f7a07e9291edaa"),
+      "pid" : 3, 
+      "pname" : "realme", 
+      "pprice" : 30000 
+}
+{ 
+       "_id" : ObjectId("64b8039cc7f7a07e9291edab"),
+       "pid" : 4, 
+       "pname" : "oppo", 
+       "pprice" : 20000 
+}
+{ 
+        "_id" : ObjectId("64b803d5c7f7a07e9291edac"),
+        "pid" : 5,
+        "pname" : "lava", 
+        "pprice" : 25000 
+}
+{ 
+         "_id" : ObjectId("64b8044bc7f7a07e9291edad"), 
+         "pid" : 6,
+         "pname" : "xiaomi", 
+         "pprice" : 22000 
+}
+{ 
+         "_id" : ObjectId("64b80494c7f7a07e9291edae"), 
+         "pid" : 7, 
+         "pname" : "htc", 
+         "pprice" : 29000 
+}
+{
+          "_id" : ObjectId("64b804cbc7f7a07e9291edaf"),
+          "pid" : 8,
+          "pname" : "blackberry", 
+           "pprice" : 40000 
+}
+
+
+How to Sort  documents in Collections ?
+
+> db.mobile.find().sort({"pname":1})
+{ "_id" : ObjectId("64b804cbc7f7a07e9291edaf"), "pid" : 8, "pname" : "blackberry", "pprice" : 40000 }
+{ "_id" : ObjectId("64b80494c7f7a07e9291edae"), "pid" : 7, "pname" : "htc", "pprice" : 29000 }
+{ "_id" : ObjectId("64b8026ec7f7a07e9291eda8"), "pid" : 1, "pname" : "iphone", "pprice" : 67999 }
+{ "_id" : ObjectId("64b803d5c7f7a07e9291edac"), "pid" : 5, "pname" : "lava", "pprice" : 25000 }
+{ "_id" : ObjectId("64b8039cc7f7a07e9291edab"), "pid" : 4, "pname" : "oppo", "pprice" : 20000 }
+{ "_id" : ObjectId("64b8036ac7f7a07e9291edaa"), "pid" : 3, "pname" : "realme", "pprice" : 30000 }
+{ "_id" : ObjectId("64b80327c7f7a07e9291eda9"), "pid" : 2, "pname" : "samsung", "pprice" : 25000 }
+{ "_id" : ObjectId("64b8044bc7f7a07e9291edad"), "pid" : 6, "pname" : "xiaomi", "pprice" : 22000 }
+>
+
+
+How to limit fields when listing all the documents present in a collection?
+Example
+db.mobile.find({},{id:1}).pretty()
+
+> db.mobile.find({},{id:1}).pretty()
+
+
+> db.mobile.find({},{id:1}).pretty()
+{ "_id" : ObjectId("64b8026ec7f7a07e9291eda8") }
+{ "_id" : ObjectId("64b80327c7f7a07e9291eda9") }
+{ "_id" : ObjectId("64b8036ac7f7a07e9291edaa") }
+{ "_id" : ObjectId("64b8039cc7f7a07e9291edab") }
+{ "_id" : ObjectId("64b803d5c7f7a07e9291edac") }
+{ "_id" : ObjectId("64b8044bc7f7a07e9291edad") }
+{ "_id" : ObjectId("64b80494c7f7a07e9291edae") }
+{ "_id" : ObjectId("64b804cbc7f7a07e9291edaf") }
+>
+
+How to remove a document from a collection ?
+db.[name of collections].remove({})
+or
+
+db.[name of collections].remove({}, {justOne: true}) to remove just one with the unique match.
+Example
+> db.mobile.find({})
+
+
+{ "_id" : ObjectId("64b8026ec7f7a07e9291eda8"), "pid" : 1, "pname" : "iphone", "pprice" : 67999 }
+{ "_id" : ObjectId("64b80327c7f7a07e9291eda9"), "pid" : 2, "pname" : "samsung", "pprice" : 25000 }
+{ "_id" : ObjectId("64b8036ac7f7a07e9291edaa"), "pid" : 3, "pname" : "realme", "pprice" : 30000 }
+{ "_id" : ObjectId("64b8039cc7f7a07e9291edab"), "pid" : 4, "pname" : "oppo", "pprice" : 20000 }
+{ "_id" : ObjectId("64b803d5c7f7a07e9291edac"), "pid" : 5, "pname" : "lava", "pprice" : 25000 }
+{ "_id" : ObjectId("64b8044bc7f7a07e9291edad"), "pid" : 6, "pname" : "xiaomi", "pprice" : 22000 }
+{ "_id" : ObjectId("64b80494c7f7a07e9291edae"), "pid" : 7, "pname" : "htc", "pprice" : 29000 }
+{ "_id" : ObjectId("64b804cbc7f7a07e9291edaf"), "pid" : 8, "pname" : "blackberry", "pprice" : 40000 }
+>
+
+
+> db.mobile.remove({"pname":"htc"})
+WriteResult({ "nRemoved" : 1 })
+> db.mobile.find({})
+{ "_id" : ObjectId("64b8026ec7f7a07e9291eda8"), "pid" : 1, "pname" : "iphone", "pprice" : 67999 }
+{ "_id" : ObjectId("64b80327c7f7a07e9291eda9"), "pid" : 2, "pname" : "samsung", "pprice" : 25000 }
+{ "_id" : ObjectId("64b8036ac7f7a07e9291edaa"), "pid" : 3, "pname" : "realme", "pprice" : 30000 }
+{ "_id" : ObjectId("64b8039cc7f7a07e9291edab"), "pid" : 4, "pname" : "oppo", "pprice" : 20000 }
+{ "_id" : ObjectId("64b803d5c7f7a07e9291edac"), "pid" : 5, "pname" : "lava", "pprice" : 25000 }
+{ "_id" : ObjectId("64b8044bc7f7a07e9291edad"), "pid" : 6, "pname" : "xiaomi", "pprice" : 22000 }
+{ "_id" : ObjectId("64b804cbc7f7a07e9291edaf"), "pid" : 8, "pname" : "blackberry", "pprice" : 40000 }
+>
+
+> db
+productsdb
+> db.mobiles2.insert({"pid":1,"pname":"motorola","pprice":35000})
+WriteResult({ "nInserted" : 1 })
+> db.mobiles2.insert({"pid":2,"pname":"panasonic","pprice":20000})
+WriteResult({ "nInserted" : 1 })
+>
+
+> db.mobiles2.find({})
+{ "_id" : ObjectId("64b815866e566309cb1fe29a"), "pid" : 1, "pname" : "motorola", "pprice" : 35000 }
+{ "_id" : ObjectId("64b815ec6e566309cb1fe29b"), "pid" : 2, "pname" : "panasonic", "pprice" : 20000 }
+>
+cls
+To remove a collection
+		>db.mobiles2.drop()
+		True
+> db.mobiles2.find({})
+>
+
+To see the version
+              > db.version()
+                     5.0.14		
+To clear screen 
+	>cls
+Exit form mongodb
+> exit
+bye
+
+D:\mymongodata>
